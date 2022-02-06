@@ -34,9 +34,9 @@ client.on("messageCreate", async (message) => {
     player.play(resource);
     connection.subscribe(player);
 
-    player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
+    /* player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
       connection.destroy();
-    });
+    }); */
   } else if (messageToLower.includes("fart" && "promp")) {
     message.channel.send(`ok ${message.author.username} :flushed:`);
     const channel = message.member.voice.channel;
@@ -53,9 +53,9 @@ client.on("messageCreate", async (message) => {
     player.play(resource);
     connection.subscribe(player);
 
-    player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
+    /* player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
       connection.destroy();
-    });
+    }); */
   } else if (messageToLower.includes("stikk av")) {
     const channel = message.member.voice.channel;
 
