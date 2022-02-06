@@ -37,7 +37,7 @@ client.on("messageCreate", async (message) => {
     player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
       connection.destroy();
     });
-  } /*  else if (messageToLower.includes("fart" && "promp")) {
+  } else if (messageToLower.includes("fart" && "promp")) {
     message.channel.send(`ok ${message.author.username} :flushed:`);
     const channel = message.member.voice.channel;
 
@@ -72,7 +72,7 @@ client.on("messageCreate", async (message) => {
   } else {
     console.log("Not right keyword");
     return;
-  } */
+  }
 });
 
 client.on("error", (message, err) =>
