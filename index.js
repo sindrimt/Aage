@@ -11,12 +11,14 @@ const voiceDiscord = require("@discordjs/voice");
 
 client.on("ready", (message) => console.log("Ready to serve master"));
 
-client.on("messageCreate", async (message) => {
-  console.log(`Message : ${message.content}`);
+client.on(
+  "messageCreate",
+  async (message) => {
+    console.log(`Message : ${message.content}`);
 
-  let messageToLower = message.content.toLowerCase();
+    let messageToLower = message.content.toLowerCase();
 
-  if (messageToLower.includes("åge")) {
+    /* if (messageToLower.includes("åge")) { */
     message.channel.send(`ok ${message.author.username}`);
     const channel = message.member.voice.channel;
 
@@ -37,7 +39,7 @@ client.on("messageCreate", async (message) => {
     /* player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
       connection.destroy();
     }); */
-  } else if (messageToLower.includes("fart" && "promp")) {
+  } /* else if (messageToLower.includes("fart" && "promp")) {
     message.channel.send(`ok ${message.author.username} :flushed:`);
     const channel = message.member.voice.channel;
 
@@ -51,12 +53,12 @@ client.on("messageCreate", async (message) => {
     });
 
     player.play(resource);
-    connection.subscribe(player);
+    connection.subscribe(player); */
 
-    /* player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
+  /* player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
       connection.destroy();
     }); */
-  } else if (messageToLower.includes("stikk av")) {
+  /* } else if (messageToLower.includes("stikk av")) {
     const channel = message.member.voice.channel;
 
     const player = voiceDiscord.createAudioPlayer();
@@ -72,8 +74,9 @@ client.on("messageCreate", async (message) => {
   } else {
     console.log("Not right keyword");
     return;
-  }
-});
+  } */
+  /* } */
+);
 
 client.on("error", (message, err) =>
   message.channel.rep("An error encountered: " + err)
