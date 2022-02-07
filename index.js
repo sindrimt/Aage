@@ -6,10 +6,32 @@ const client = new Discord.Client({ intents: 32767 });
 
 const config = require("./Data/config.json"); // Importerer export fra config.json
 const resources = config.resources;
+const guildId = "880738403040239676";
 
 const voiceDiscord = require("@discordjs/voice");
 
-client.on("ready", (message) => console.log("Ready to serve master"));
+client.on("ready", (message, mordi) => {
+  console.log("Ready to serve master");
+  console.log("Current Mapping : ");
+  console.log("======================================");
+  getChannelsForClient();
+  console.log("======================================");
+});
+
+client.on("channelCreate", (message) => {
+  console.log("A channel was created");
+  getChannelsForClient();
+});
+
+client.on("channelDelete", (message) => {
+  console.log("A channel was deleted");
+  getChannelsForClient();
+});
+
+client.on("channelUpdate", (message) => {
+  console.log("A channel was updated");
+  getChannelsForClient();
+});
 
 client.on("messageCreate", async (message) => {
   console.log(`Message : ${message.content}`);
@@ -44,12 +66,15 @@ client.on("messageCreate", async (message) => {
     message.channel.send(`ok ${message.author.username} :flushed:`);
     const channel = message.member.voice.channel;
 
+    console.log(`Channel ID : ${channel.id}`);
+    //const channel = client.channels.resolveId("882902642165178398");
+
     const player = voiceDiscord.createAudioPlayer();
     const resource = voiceDiscord.createAudioResource(resources[1]); //resources[1];
 
     const connection = voiceDiscord.joinVoiceChannel({
-      channelId: channel.id,
-      guildId: message.guild.id,
+      channelId: "887821041810956288",
+      guildId: guildId,
       adapterCreator: message.guild.voiceAdapterCreator,
     });
 
@@ -72,14 +97,52 @@ client.on("messageCreate", async (message) => {
     });
 
     connection.destroy();
+  } else if (messageToLower.includes("array")) {
+    /***
+     *
+     */
+    //console.log(message.guild.channels.cache.at(2));
+    const channels = message.guild.channels.cache;
+    let channelArray = new Map();
+
+    channels.forEach((index) => {
+      if (index.joinable) {
+        channelArray.set(index.name, index.id);
+        //console.log(`${index.name} is joinable`);
+      } else {
+        //console.log(`${index.name} is not joinable`);
+      }
+
+      //console.log(`Index : ${index.name} ${index.joinable}`);
+    });
+    console.log(channelArray);
+    console.log(channelArray.get("Lobby"));
   } else {
-    console.log("Not right keyword");
+    //console.log("Not right keyword");
     return;
   }
 });
 
+const getChannelsForClient = () => {
+  const channels = client.channels.cache;
+  //console.log(channels);
+  let channelArray = new Map();
+
+  channels.forEach((index) => {
+    if (index.joinable) {
+      channelArray.set(index.name, index.id);
+      //console.log(`${index.name} is joinable`);
+    } else {
+      //console.log(`${index.name} is not joinable`);
+    }
+
+    //console.log(`Index : ${index.name} ${index.joinable}`);
+  });
+  console.log(channelArray);
+};
+
 client.on("error", (message, err) =>
-  message.channel.rep("An error encountered: " + err)
+  message.channel.send("An error encountered: " + err)
 );
 
 client.login(config.token);
