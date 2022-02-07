@@ -164,4 +164,4 @@ client.on("error", (message, err) =>
   message.channel.send("An error encountered: " + err)
 );
 
-client.login(config.tokenTest);
+client.login(config.token);
