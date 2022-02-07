@@ -76,8 +76,8 @@ client.on("messageCreate", async (message) => {
     const resource = voiceDiscord.createAudioResource(resources[1]); //resources[1];
 
     const connection = voiceDiscord.joinVoiceChannel({
-      channelId: message.member.voice.channel, //TODO OOPS HARDCODA BYTT
-      guildId: guildId,
+      channelId: channel.id, //TODO OOPS HARDCODA BYTT
+      guildId: message.guild.id,
       adapterCreator: message.guild.voiceAdapterCreator,
     });
 
