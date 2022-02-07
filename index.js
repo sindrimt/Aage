@@ -14,23 +14,23 @@ client.on("ready", (message, mordi) => {
   console.log("Ready to serve master");
   console.log("Current Mapping : ");
   console.log("======================================");
-  getChannelsForClient();
+  getMembersInChannels();
   console.log("======================================");
 });
 
 client.on("channelCreate", (message) => {
   console.log("A channel was created");
-  getChannelsForClient();
+  getMembersInChannels();
 });
 
 client.on("channelDelete", (message) => {
   console.log("A channel was deleted");
-  getChannelsForClient();
+  getMembersInChannels();
 });
 
 client.on("channelUpdate", (message) => {
   console.log("A channel was updated");
-  getChannelsForClient();
+  getMembersInChannels();
 });
 
 client.on("messageCreate", async (message) => {
@@ -131,6 +131,29 @@ const getChannelsForClient = () => {
   channels.forEach((index) => {
     if (index.joinable) {
       channelArray.set(index.name, index.id);
+      //console.log(`${index.name} is joinable`);
+    } else {
+      //console.log(`${index.name} is not joinable`);
+    }
+
+    //console.log(`Index : ${index.name} ${index.joinable}`);
+  });
+  console.log(channelArray);
+};
+const getMembersInChannels = () => {
+  const channels = client.channels.cache;
+  //console.log(channels);
+  let channelArray = new Map();
+
+  channels.forEach((index) => {
+    if (index.joinable) {
+      /**
+       * "Channel => ["channel id", "member count"]"
+       */
+      channelArray.set(index.name, [
+        index.id,
+        index.members.filter((member) => member.user).size,
+      ]);
       //console.log(`${index.name} is joinable`);
     } else {
       //console.log(`${index.name} is not joinable`);
