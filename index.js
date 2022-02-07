@@ -6,11 +6,12 @@ const client = new Discord.Client({ intents: 32767 });
 
 const config = require("./Data/config.json"); // Importerer export fra config.json
 const resources = config.resources;
-const guildId = "880738403040239676";
 
 const voiceDiscord = require("@discordjs/voice");
 
 client.on("ready", (message, mordi) => {
+  // TODO NÅR HVER TIME FUNKSJONEN KJØRER, HUSK Å KJØ GETMEMBERSINCHANNELS FOR Å OPPDATERE
+  // TODO HVOR MANGE MEMBERS DET ER I HVER CHANNEL - HVIS IKKE FUNKER DET IKEK :(
   console.log("Ready to serve master");
   console.log("Current Mapping : ");
   console.log("======================================");
@@ -73,7 +74,7 @@ client.on("messageCreate", async (message) => {
     const resource = voiceDiscord.createAudioResource(resources[1]); //resources[1];
 
     const connection = voiceDiscord.joinVoiceChannel({
-      channelId: "887821041810956288",
+      channelId: "887821041810956288", //TODO OOPS HARDCODA BYTT
       guildId: guildId,
       adapterCreator: message.guild.voiceAdapterCreator,
     });
@@ -102,21 +103,7 @@ client.on("messageCreate", async (message) => {
      *
      */
     //console.log(message.guild.channels.cache.at(2));
-    const channels = message.guild.channels.cache;
-    let channelArray = new Map();
-
-    channels.forEach((index) => {
-      if (index.joinable) {
-        channelArray.set(index.name, index.id);
-        //console.log(`${index.name} is joinable`);
-      } else {
-        //console.log(`${index.name} is not joinable`);
-      }
-
-      //console.log(`Index : ${index.name} ${index.joinable}`);
-    });
-    console.log(channelArray);
-    console.log(channelArray.get("Lobby"));
+    getMembersInChannels();
   } else {
     //console.log("Not right keyword");
     return;
@@ -140,32 +127,40 @@ const getChannelsForClient = () => {
   });
   console.log(channelArray);
 };
+
 const getMembersInChannels = () => {
   const channels = client.channels.cache;
   //console.log(channels);
   let channelArray = new Map();
 
   channels.forEach((index) => {
+    // Sjekker om channelen er joinable => voiceChannel
     if (index.joinable) {
-      /**
-       * "Channel => ["channel id", "member count"]"
-       */
+      // "Channel => ["channel id", "member count"]"
+
       channelArray.set(index.name, [
         index.id,
         index.members.filter((member) => member.user).size,
       ]);
-      //console.log(`${index.name} is joinable`);
-    } else {
-      //console.log(`${index.name} is not joinable`);
     }
-
-    //console.log(`Index : ${index.name} ${index.joinable}`);
   });
-  console.log(channelArray);
+  let max = 0;
+  // Finner kanalen med flest medlemmer
+  channelArray.forEach((channel) => {
+    if (channel[1] > max) {
+      max = channel[1];
+    }
+  });
+
+  for (let [key, value] of channelArray.entries()) {
+    if (value[1] === 1) {
+      console.log(`key : ${key} id : ${value[0]}`);
+    }
+  }
 };
 
 client.on("error", (message, err) =>
   message.channel.send("An error encountered: " + err)
 );
 
-client.login(config.token);
+client.login(config.tokenTest);
