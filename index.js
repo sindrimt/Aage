@@ -157,6 +157,7 @@ const getMembersInChannels = () => {
       console.log(`key : ${key} id : ${value[0]}`);
     }
   }
+  console.log(channelArray);
 };
 
 client.on("error", (message, err) =>
