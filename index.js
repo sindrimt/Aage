@@ -8,7 +8,7 @@ const config = require("./Data/config.json"); // Importerer export fra config.js
 const resources = config.resources;
 
 const voiceDiscord = require("@discordjs/voice");
-const interval = 1 * 1000 * 60 * 60; // 1 time
+const interval = 1 * 1000 * 60 * 30; // 1 time
 
 const testServer = "880738403040239676";
 const leage = "699001511367278633";
