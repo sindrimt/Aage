@@ -43,9 +43,9 @@ client.on("messageCreate", async (message) => {
   console.log(`Message : ${message.content}`);
 
   let messageToLower = message.content.toLowerCase();
-  if (messageToLower.includes("åge")) {
+  if (messageToLower == "åge") {
     message.channel.send(
-      `Hallo ${message.author.username} æ sjer at du har prøvd å kall på mæ :face_exhaling: ... men tia e itj inn ennjå... :sleeping: Du får vennjt å shje, åg kanskje æ kjæm :soccer:`
+      `Hallo ${message.author.username}, gamer. Åge er på vei :face_exhaling: :soccer:`
     );
   }
 
