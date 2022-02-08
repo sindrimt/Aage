@@ -8,7 +8,7 @@ const config = require("./Data/config.json"); // Importerer export fra config.js
 const resources = config.resources;
 
 const voiceDiscord = require("@discordjs/voice");
-const interval = 1 * 1000 * 60 * 30; // 1 time
+const interval = 1 * 1000 * 60 * 20; // 30 minutter
 
 const testServer = "880738403040239676";
 const leage = "699001511367278633";
@@ -43,6 +43,11 @@ client.on("messageCreate", async (message) => {
   console.log(`Message : ${message.content}`);
 
   let messageToLower = message.content.toLowerCase();
+  if (messageToLower.includes("åge")) {
+    message.channel.send(
+      `Hallo ${message.author.username} æ sjer at du har prøvd å kall på mæ :face_exhaling: ... men tia e itj inn ennjå... :sleeping: Du får vennjt å shje, åg kanskje æ kjæm :soccer:`
+    );
+  }
 
   /* if (messageToLower.includes("åge")) {
     message.channel.send(`ok ${message.author.username}`);
