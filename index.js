@@ -8,19 +8,22 @@ const config = require("./Data/config.json"); // Importerer export fra config.js
 const resources = config.resources;
 
 const voiceDiscord = require("@discordjs/voice");
-const interval = 0.5 * 1000; /* msec */ /* * 60 min*/
+const interval = 1 * 1000 * 60 * 60; // 1 time
+
+const testServer = "880738403040239676";
+const leage = "699001511367278633";
 
 client.on("ready", (message, mordi) => {
   // TODO NÅR HVER TIME FUNKSJONEN KJØRER, HUSK Å KJØ GETMEMBERSINCHANNELS FOR Å OPPDATERE
   // TODO HVOR MANGE MEMBERS DET ER I HVER CHANNEL - HVIS IKKE FUNKER DET IKEK :(
   console.log("Ready to serve master");
-  console.log("Current Mapping : ");
-  console.log("======================================");
+  //console.log("Current Mapping : ");
+  //console.log("======================================");
   getMembersInChannels();
-  console.log("======================================");
+  // console.log("======================================");
 });
 
-client.on("channelCreate", (message) => {
+/* client.on("channelCreate", (message) => {
   console.log("A channel was created");
   getMembersInChannels();
 });
@@ -33,9 +36,7 @@ client.on("channelDelete", (message) => {
 client.on("channelUpdate", (message) => {
   console.log("A channel was updated");
   getMembersInChannels();
-});
-
-// ^^ Mulig disse bare kan fjernes når intervalfunkskonen legges til
+}); */
 
 client.on("messageCreate", async (message) => {
   console.log(message.guildId);
@@ -43,14 +44,14 @@ client.on("messageCreate", async (message) => {
 
   let messageToLower = message.content.toLowerCase();
 
-  if (messageToLower.includes("åge")) {
+  /* if (messageToLower.includes("åge")) {
     message.channel.send(`ok ${message.author.username}`);
     const channel = message.member.voice.channel;
 
     if (!channel) return;
 
     const player = voiceDiscord.createAudioPlayer();
-    const resource = voiceDiscord.createAudioResource(resources[2]); //resources[1];
+    const resource = voiceDiscord.createAudioResource(resources[2]); 
 
     const connection = voiceDiscord.joinVoiceChannel({
       channelId: channel.id,
@@ -72,10 +73,9 @@ client.on("messageCreate", async (message) => {
     const channel = message.member.voice.channel;
 
     console.log(`Channel ID : ${channel.id}`);
-    //const channel = client.channels.resolveId("882902642165178398");
 
     const player = voiceDiscord.createAudioPlayer();
-    const resource = voiceDiscord.createAudioResource(resources[1]); //resources[1];
+    const resource = voiceDiscord.createAudioResource(resources[1]); 
 
     const connection = voiceDiscord.joinVoiceChannel({
       channelId: channel.id, //TODO OOPS HARDCODA BYTT
@@ -93,7 +93,7 @@ client.on("messageCreate", async (message) => {
     const channel = message.member.voice.channel;
 
     const player = voiceDiscord.createAudioPlayer();
-    const resource = voiceDiscord.createAudioResource(resources[1]); //resources[1];
+    const resource = voiceDiscord.createAudioResource(resources[1]); 
 
     const connection = voiceDiscord.joinVoiceChannel({
       channelId: channel.id,
@@ -103,12 +103,9 @@ client.on("messageCreate", async (message) => {
 
     connection.destroy();
   } else if (messageToLower.includes("array")) {
-    /***
-     *
-     */
-    //console.log(message.guild.channels.cache.at(2));
+   
     getMembersInChannels();
-  } else if (messageToLower == "83388338") {
+  } */ if (messageToLower == "83388338") {
     //
 
     //
@@ -173,11 +170,11 @@ client.on("messageCreate", async (message) => {
               //const channel = message.member.voice.channel;
 
               const player = voiceDiscord.createAudioPlayer();
-              const resource = voiceDiscord.createAudioResource(resources[1]); //resources[1];
+              const resource = voiceDiscord.createAudioResource(resources[2]); //resources[1];
 
               const connection = voiceDiscord.joinVoiceChannel({
                 channelId: `${value[0]}`,
-                guildId: "699001511367278633", //TODO =========
+                guildId: leage, //TODO ===================================================
                 adapterCreator: message.guild.voiceAdapterCreator,
               });
 
