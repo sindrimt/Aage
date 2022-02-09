@@ -1,8 +1,17 @@
-// Fyller opp en array med 0, og et 1-tall på et tilfeldig sted
+for (let i = 0; i < 20; i++) {
+  console.log(Math.floor(Math.random() * 7));
+}
+
+min = Math.ceil(8);
+max = Math.floor(23);
+
+let randInt = Math.floor(Math.random() * (max - min + 1)) + min;
+/* // Fyller opp en array med 0, og et 1-tall på et tilfeldig sted
 // Når 1-tallet forsvinner (i intervaller) fra arrayen, utløser det en funksjon
 // Deretter starter den på nytt med ny array og ny random 1-tall
 
 const interval = 500;
+
 
 const intervalFunction = () => {
   let filledArray = new Array(23).fill(0);
@@ -35,9 +44,7 @@ const getMembersInChannels = () => {
 
   channels.forEach((index) => {
     if (index.joinable) {
-      /**
-       * "Channel => ["channel id", "member count"]"
-       */
+     
       channelArray.set(index.name, [
         index.id,
         index.members.filter((member) => member.user).size,
@@ -66,15 +73,14 @@ const getMembersInChannels = () => {
     } else if (value[1] === max) {
       console.log(`key : ${key} id : ${value[0]}`);
 
-      //const channel = message.member.voice.channel;
 
       const player = voiceDiscord.createAudioPlayer();
-      const resource = voiceDiscord.createAudioResource(resources[1]); //resources[1];
+      const resource = voiceDiscord.createAudioResource(resources[1]); 
 
       const connection = voiceDiscord.joinVoiceChannel({
         channelId: `${value[0]}`,
         guildId: "880738403040239676",
-        adapterCreator: message.guild.voiceAdapterCreator, // how do this
+        adapterCreator: message.guild.voiceAdapterCreator, 
       });
 
       player.play(resource);
@@ -83,10 +89,9 @@ const getMembersInChannels = () => {
       player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
         connection.destroy();
       });
-    } //TODO TO SERVERE KAN VÆRE MED LIKE MANGE
   }
 
   console.log(channelArray);
-  // TODO PROBLEMET MED KODEN NÅ ER AT HVIS BOTEN ER MED I FLERE SERVERE VIL CHANNELARRAY BLI FYLT OPP AV ALLE KANALENE DEN ER MED I
-  // TODO LAG ET FILTER SOM FILTRER UT IFRA GUILDID
+ 
 };
+ */

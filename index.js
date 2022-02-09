@@ -8,7 +8,7 @@ const config = require("./Data/config.json"); // Importerer export fra config.js
 const resources = config.resources;
 
 const voiceDiscord = require("@discordjs/voice");
-const interval = 1 * 1000 * 60 * 13; // 13 minutter
+const interval = 1 * 1000 * 60 * 15; // 15 minutter
 
 const testServer = "880738403040239676";
 const leage = "699001511367278633";
@@ -118,7 +118,12 @@ client.on("messageCreate", async (message) => {
 
     const intervalFunction = () => {
       let filledArray = new Array(23).fill(0);
-      let randInt = Math.floor(Math.random() * 23);
+      //let randInt = Math.floor(Math.random() * 23);
+
+      min = Math.ceil(8);
+      max = Math.floor(23);
+
+      let randInt = Math.floor(Math.random() * (max - min + 1)) + min;
 
       filledArray.splice(randInt, 0, 1);
 
@@ -173,10 +178,13 @@ client.on("messageCreate", async (message) => {
               console.log(`key : ${key} id : ${value[0]}`);
 
               //const channel = message.member.voice.channel;
-
+              let random = Math.floor(Math.random() * 6); // 1/6 sjanse for å spille super rare Åge sang
+              console.log("RNDOOOOOOOOM   :   " + random);
               const player = voiceDiscord.createAudioPlayer();
-              const resource = voiceDiscord.createAudioResource(resources[2]); //resources[1];
 
+              const resource = voiceDiscord.createAudioResource(
+                resources[random]
+              );
               const connection = voiceDiscord.joinVoiceChannel({
                 channelId: `${value[0]}`,
                 guildId: leage, //TODO ===================================================
