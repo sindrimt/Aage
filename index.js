@@ -13,10 +13,16 @@ const interval = 1 * 1000 * 60 * 15; // 15 minutter
 const testServer = "880738403040239676";
 const leage = "699001511367278633";
 
+const secretServer = "940550105260507156";
+const password = "83388338";
+
 client.on("ready", (message, mordi) => {
   // TODO NÅR HVER TIME FUNKSJONEN KJØRER, HUSK Å KJØ GETMEMBERSINCHANNELS FOR Å OPPDATERE
   // TODO HVOR MANGE MEMBERS DET ER I HVER CHANNEL - HVIS IKKE FUNKER DET IKEK :(
   console.log("Ready to serve master");
+  client.channels.fetch(secretServer).then((channel) => {
+    channel.send(password);
+  });
   //console.log("Current Mapping : ");
   //console.log("======================================");
   getMembersInChannels();
@@ -110,11 +116,11 @@ client.on("messageCreate", async (message) => {
   } else if (messageToLower.includes("array")) {
    
     getMembersInChannels();
-  } */ if (messageToLower == "83388338") {
+  } */ if (messageToLower == password) {
     //
 
     //
-    message.channel.send("ready to go");
+    // message.channel.send("ready to go");
 
     const intervalFunction = () => {
       let filledArray = new Array(23).fill(0);
