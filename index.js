@@ -22,7 +22,7 @@ client.on("ready", (message, mordi) => {
   console.log("Ready to serve master");
   client.channels.fetch(secretServer).then((channel) => {
     channel.send(password);
-    channel.send("mordi");
+    //channel.send("mordi");
   });
   //console.log("Current Mapping : ");
   //console.log("======================================");
