@@ -26,7 +26,6 @@ client.on("ready", (message, mordi) => {
   //console.log("Current Mapping : ");
   //console.log("======================================");
   getMembersInChannels();
-  // console.log("======================================");
 });
 
 /* client.on("channelCreate", (message) => {
