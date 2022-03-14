@@ -8,7 +8,7 @@ const config = require("./Data/config.json"); // Importerer export fra config.js
 const resources = config.resources;
 
 const voiceDiscord = require("@discordjs/voice");
-const interval = 1 * 1000 * 60 * 20; // 20 minutter
+const interval = 1 * 1000 * 60 * 30; // 30 minutter
 
 const testServer = "880738403040239676";
 const leage = "699001511367278633";
@@ -49,9 +49,7 @@ client.on("messageCreate", async (message) => {
 
   let messageToLower = message.content.toLowerCase();
   if (messageToLower == "åge") {
-    message.channel.send(
-      `Hallo ${message.author.username}, gamer. Åge er på vei :face_exhaling: :soccer:`
-    );
+    message.channel.send(`Hallo ${message.author.username}, gamer. Åge er på vei :face_exhaling: :soccer:`);
   }
 
   /* if (messageToLower.includes("åge")) {
@@ -150,10 +148,7 @@ client.on("messageCreate", async (message) => {
               /**
                * "Channel => ["channel id", "member count"]"
                */
-              channelArray.set(index.name, [
-                index.id,
-                index.members.filter((member) => member.user).size,
-              ]);
+              channelArray.set(index.name, [index.id, index.members.filter((member) => member.user).size]);
 
               //console.log(`${index.name} is joinable`);
             } else {
@@ -187,9 +182,7 @@ client.on("messageCreate", async (message) => {
               console.log("RNDOOOOOOOOM   :   " + random);
               const player = voiceDiscord.createAudioPlayer();
 
-              const resource = voiceDiscord.createAudioResource(
-                resources[random]
-              );
+              const resource = voiceDiscord.createAudioResource(resources[random]);
               const connection = voiceDiscord.joinVoiceChannel({
                 channelId: `${value[0]}`,
                 guildId: leage, //TODO ===================================================
@@ -253,10 +246,7 @@ const getMembersInChannels = () => {
       /**
        * "Channel => ["channel id", "member count"]"
        */
-      channelArray.set(index.name, [
-        index.id,
-        index.members.filter((member) => member.user).size,
-      ]);
+      channelArray.set(index.name, [index.id, index.members.filter((member) => member.user).size]);
 
       //console.log(`${index.name} is joinable`);
     } else {
@@ -289,8 +279,6 @@ const getMembersInChannels = () => {
 };
 //TODO
 
-client.on("error", (message, err) =>
-  message.channel.send("An error encountered: " + err)
-);
+client.on("error", (message, err) => message.channel.send("An error encountered: " + err));
 
 client.login(config.token);
