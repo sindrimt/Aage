@@ -14,7 +14,7 @@ const testServer = "880738403040239676";
 const leage = "699001511367278633";
 
 const secretServer = "940550105260507156";
-const password = "83388338";
+const password = "Cycling server";
 
 client.on("ready", (message, mordi) => {
   // TODO NÅR HVER TIME FUNKSJONEN KJØRER, HUSK Å KJØ GETMEMBERSINCHANNELS FOR Å OPPDATERE
@@ -23,8 +23,7 @@ client.on("ready", (message, mordi) => {
   client.channels.fetch(secretServer).then((channel) => {
     channel.send(password);
   });
-  //console.log("Current Mapping : ");
-  //console.log("======================================");
+
   getMembersInChannels();
 });
 
