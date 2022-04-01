@@ -280,4 +280,4 @@ const getMembersInChannels = () => {
 
 client.on("error", (message, err) => message.channel.send("An error encountered: " + err));
 
-client.login(config.token);
+client.login(process.env.SECRET_TOKEN);
