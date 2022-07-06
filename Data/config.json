@@ -1,14 +1,14 @@
 {
-  "token": "OTM5MjM0MzMwNDAyNzY2ODg4.Yf14Ig._g90rJf7jSrLcGNOpAOyPdi0fvI",
-  "tokenTest": "ODgwODA1MDg0MjE1MjQ2OTI5.YSjnqA.m4qdEZKTooRj8GfeNON4aLqgWGM",
-  "prefix": "?",
+    "token": "?",
+    "tokenTest": "?",
+    "prefix": "?",
 
-  "resources": [
-    "https://cdn.discordapp.com/attachments/915891937519755294/939256889022218300/Age_Aleksandersen_-_Fotbaill_med_tekst.mp3",
-    "https://cdn.discordapp.com/attachments/915891937519755294/939256889022218300/Age_Aleksandersen_-_Fotbaill_med_tekst.mp3",
-    "https://cdn.discordapp.com/attachments/915891937519755294/939256889022218300/Age_Aleksandersen_-_Fotbaill_med_tekst.mp3",
-    "https://cdn.discordapp.com/attachments/915891937519755294/939256889022218300/Age_Aleksandersen_-_Fotbaill_med_tekst.mp3",
-    "https://cdn.discordapp.com/attachments/915891937519755294/939256889022218300/Age_Aleksandersen_-_Fotbaill_med_tekst.mp3",
-    "https://cdn.discordapp.com/attachments/915891937519755294/941051548505608222/Age_Aleksandersen_-_Fotbaill_slowed__reverb.mp3"
-  ]
+    "resources": [
+        "https://cdn.discordapp.com/attachments/915891937519755294/939256889022218300/Age_Aleksandersen_-_Fotbaill_med_tekst.mp3",
+        "https://cdn.discordapp.com/attachments/915891937519755294/939256889022218300/Age_Aleksandersen_-_Fotbaill_med_tekst.mp3",
+        "https://cdn.discordapp.com/attachments/915891937519755294/939256889022218300/Age_Aleksandersen_-_Fotbaill_med_tekst.mp3",
+        "https://cdn.discordapp.com/attachments/915891937519755294/939256889022218300/Age_Aleksandersen_-_Fotbaill_med_tekst.mp3",
+        "https://cdn.discordapp.com/attachments/915891937519755294/939256889022218300/Age_Aleksandersen_-_Fotbaill_med_tekst.mp3",
+        "https://cdn.discordapp.com/attachments/915891937519755294/941051548505608222/Age_Aleksandersen_-_Fotbaill_slowed__reverb.mp3"
+    ]
 }
