@@ -8,41 +8,27 @@ const config = require("./Data/config.json"); // Importerer export fra config.js
 const resources = config.resources;
 
 const voiceDiscord = require("@discordjs/voice");
-const interval = 1 * 1000 * 60 * 20; // 20 minutter
+const interval = 1 * 1000 * 1; // 20 minutter
 
 const testServer = "880738403040239676";
 const leage = "699001511367278633";
 
 const secretServer = "940550105260507156";
+const testServerChannel = "880738403040239678";
 const password = "cycling server";
 
 client.on("ready", (message, mordi) => {
     console.log("Ready to serve master");
-    client.channels.fetch(secretServer).then((channel) => {
+    client.channels.fetch(testServerChannel).then((channel) => {
         channel.send(password);
     });
-    //console.log("Current Mapping : ");
-    //console.log("======================================");
+
     getMembersInChannels();
 });
 
-/* client.on("channelCreate", (message) => {
-  console.log("A channel was created");
-  getMembersInChannels();
-});
-
-client.on("channelDelete", (message) => {
-  console.log("A channel was deleted");
-  getMembersInChannels();
-});
-
-client.on("channelUpdate", (message) => {
-  console.log("A channel was updated");
-  getMembersInChannels();
-}); */
-
 client.on("messageCreate", async (message) => {
     console.log(message.guildId);
+    console.log(message.channelId);
     console.log(`Message : ${message.content}`);
 
     let messageToLower = message.content.toLowerCase();
@@ -50,68 +36,7 @@ client.on("messageCreate", async (message) => {
         message.channel.send(`Hallo ${message.author.username}, gamer. Åge er på vei :face_exhaling: :soccer:`);
     }
 
-    /* if (messageToLower.includes("åge")) {
-    message.channel.send(`ok ${message.author.username}`);
-    const channel = message.member.voice.channel;
-
-    if (!channel) return;
-
-    const player = voiceDiscord.createAudioPlayer();
-    const resource = voiceDiscord.createAudioResource(resources[2]); 
-
-    const connection = voiceDiscord.joinVoiceChannel({
-      channelId: channel.id,
-      guildId: message.guild.id,
-      adapterCreator: message.guild.voiceAdapterCreator,
-    });
-
-    player.play(resource);
-    connection.subscribe(player);
-
-    player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
-      connection.destroy();
-    });
-  } else if (
-    messageToLower.includes("fart") ||
-    messageToLower.includes("promp")
-  ) {
-    message.channel.send(`ok ${message.author.username} :flushed:`);
-    const channel = message.member.voice.channel;
-
-    console.log(`Channel ID : ${channel.id}`);
-
-    const player = voiceDiscord.createAudioPlayer();
-    const resource = voiceDiscord.createAudioResource(resources[1]); 
-
-    const connection = voiceDiscord.joinVoiceChannel({
-      channelId: channel.id, //TODO OOPS HARDCODA BYTT
-      guildId: message.guild.id,
-      adapterCreator: message.guild.voiceAdapterCreator,
-    });
-
-    player.play(resource);
-    connection.subscribe(player);
-
-    player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
-      connection.destroy();
-    });
-  } else if (messageToLower.includes("stikk av")) {
-    const channel = message.member.voice.channel;
-
-    const player = voiceDiscord.createAudioPlayer();
-    const resource = voiceDiscord.createAudioResource(resources[1]); 
-
-    const connection = voiceDiscord.joinVoiceChannel({
-      channelId: channel.id,
-      guildId: message.guild.id,
-      adapterCreator: message.guild.voiceAdapterCreator,
-    });
-
-    connection.destroy();
-  } else if (messageToLower.includes("array")) {
-   
-    getMembersInChannels();
-  } */ if (messageToLower == password) {
+    if (messageToLower == password) {
         //
 
         //
@@ -136,6 +61,7 @@ client.on("messageCreate", async (message) => {
                 if (filledArray.includes(1)) console.log("has 1, continue");
                 else {
                     const channels = client.channels.cache;
+                    console.log(channels);
 
                     //console.log(channels);
                     let channelArray = new Map();
@@ -146,8 +72,8 @@ client.on("messageCreate", async (message) => {
                             /**
                              * "Channel => ["channel id", "member count"]"
                              */
+                            console.log(index.name, index.memberCount);
                             channelArray.set(index.name, [index.id, index?.members?.filter((member) => member.user).size]);
-
                             //console.log(`${index.name} is joinable`);
                         } else {
                             //console.log(`${index.name} is not joinable`);
@@ -183,7 +109,7 @@ client.on("messageCreate", async (message) => {
                             const resource = voiceDiscord.createAudioResource(resources[random]);
                             const connection = voiceDiscord.joinVoiceChannel({
                                 channelId: `${value[0]}`,
-                                guildId: leage, //TODO ===================================================
+                                guildId: testServer, //TODO ===================================================
                                 adapterCreator: message.guild.voiceAdapterCreator,
                             });
 
@@ -244,8 +170,8 @@ const getMembersInChannels = () => {
             /**
              * "Channel => ["channel id", "member count"]"
              */
+            console.log(index.name, index.memberCount);
             channelArray.set(index.name, [index.id, index?.members?.filter((member) => member.user).size]);
-
             //console.log(`${index.name} is joinable`);
         } else {
             //console.log(`${index.name} is not joinable`);
@@ -279,4 +205,4 @@ const getMembersInChannels = () => {
 
 client.on("error", (message, err) => message.channel.send("An error encountered: " + err));
 
-client.login(process.env.SECRET_TOKEN);
+client.login("tiss");
