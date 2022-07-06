@@ -21,25 +21,8 @@ client.on("ready", (message, mordi) => {
     client.channels.fetch(secretServer).then((channel) => {
         channel.send(password);
     });
-    //console.log("Current Mapping : ");
-    //console.log("======================================");
     getMembersInChannels();
 });
-
-/* client.on("channelCreate", (message) => {
-  console.log("A channel was created");
-  getMembersInChannels();
-});
-
-client.on("channelDelete", (message) => {
-  console.log("A channel was deleted");
-  getMembersInChannels();
-});
-
-client.on("channelUpdate", (message) => {
-  console.log("A channel was updated");
-  getMembersInChannels();
-}); */
 
 client.on("messageCreate", async (message) => {
     console.log(message.guildId);
@@ -50,68 +33,7 @@ client.on("messageCreate", async (message) => {
         message.channel.send(`Hallo ${message.author.username}, gamer. Åge er på vei :face_exhaling: :soccer:`);
     }
 
-    /* if (messageToLower.includes("åge")) {
-    message.channel.send(`ok ${message.author.username}`);
-    const channel = message.member.voice.channel;
-
-    if (!channel) return;
-
-    const player = voiceDiscord.createAudioPlayer();
-    const resource = voiceDiscord.createAudioResource(resources[2]); 
-
-    const connection = voiceDiscord.joinVoiceChannel({
-      channelId: channel.id,
-      guildId: message.guild.id,
-      adapterCreator: message.guild.voiceAdapterCreator,
-    });
-
-    player.play(resource);
-    connection.subscribe(player);
-
-    player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
-      connection.destroy();
-    });
-  } else if (
-    messageToLower.includes("fart") ||
-    messageToLower.includes("promp")
-  ) {
-    message.channel.send(`ok ${message.author.username} :flushed:`);
-    const channel = message.member.voice.channel;
-
-    console.log(`Channel ID : ${channel.id}`);
-
-    const player = voiceDiscord.createAudioPlayer();
-    const resource = voiceDiscord.createAudioResource(resources[1]); 
-
-    const connection = voiceDiscord.joinVoiceChannel({
-      channelId: channel.id, //TODO OOPS HARDCODA BYTT
-      guildId: message.guild.id,
-      adapterCreator: message.guild.voiceAdapterCreator,
-    });
-
-    player.play(resource);
-    connection.subscribe(player);
-
-    player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
-      connection.destroy();
-    });
-  } else if (messageToLower.includes("stikk av")) {
-    const channel = message.member.voice.channel;
-
-    const player = voiceDiscord.createAudioPlayer();
-    const resource = voiceDiscord.createAudioResource(resources[1]); 
-
-    const connection = voiceDiscord.joinVoiceChannel({
-      channelId: channel.id,
-      guildId: message.guild.id,
-      adapterCreator: message.guild.voiceAdapterCreator,
-    });
-
-    connection.destroy();
-  } else if (messageToLower.includes("array")) {
-   
-    getMembersInChannels();
-  } */ if (messageToLower == password) {
+    if (messageToLower == password) {
         //
 
         //
