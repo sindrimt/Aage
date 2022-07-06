@@ -8,7 +8,7 @@ const config = require("./Data/config.json"); // Importerer export fra config.js
 const resources = config.resources;
 
 const voiceDiscord = require("@discordjs/voice");
-const interval = 1 * 1000 * 60 * 20; // 20 minutter
+const interval = 1 * 1000 * 60 * 30; // 30 minutter
 
 const testServer = "880738403040239676";
 const leage = "699001511367278633";
@@ -32,6 +32,7 @@ client.on("messageCreate", async (message) => {
     if (messageToLower == "åge") {
         message.channel.send(`Hallo ${message.author.username}, gamer. Åge er på vei :face_exhaling: :soccer:`);
     }
+
 
     if (messageToLower == password) {
         //
@@ -112,6 +113,7 @@ client.on("messageCreate", async (message) => {
                             player.play(resource);
                             connection.subscribe(player);
 
+
                             player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
                                 connection.destroy();
                             });
@@ -127,6 +129,7 @@ client.on("messageCreate", async (message) => {
         };
 
         intervalFunction();
+
 
         //
         //
@@ -172,6 +175,7 @@ const getMembersInChannels = () => {
         } else {
             //console.log(`${index.name} is not joinable`);
         }
+
 
         //console.log(`Index : ${index.name} ${index.joinable}`);
     });
