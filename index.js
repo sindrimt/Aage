@@ -244,7 +244,7 @@ const getMembersInChannels = () => {
             /**
              * "Channel => ["channel id", "member count"]"
              */
-            channelArray.set(index.name, [index.id, index.members.filter((member) => member.user).size]);
+            channelArray.set(index.name, [index.id, index?.members?.filter((member) => member.user).size]);
 
             //console.log(`${index.name} is joinable`);
         } else {
